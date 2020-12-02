@@ -269,13 +269,18 @@ def predict():
     final_features = [np.array(int_features)]
     
     visitas = modelv.predict(final_features)
-    oferticas=int_features.insert(1, visitas)
+
+
+ 
+
     
-    ofertas=modelo.predict(oferticas)
+    int_features.insert(1, int(visitas[0]))
+   
+    ofertas=modelo.predict([np.array(int_features)])
     
-    montito=oferticas.insert(8, ofertas)
+    int_features.insert(8, int(ofertas[0]))
     
-    monto=modelm.predict(montito)
+    monto=modelm.predict([np.array(int_features)])
     output = int(monto[0])
 
     return render_template('index.html', prediction_text='Monto :$ {:,.0f}'.format(output).replace(",", "@").replace(".", ",").replace("@", ".") )
