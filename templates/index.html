@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Api prediction</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+</head>
+
+
+<body>
+  <body style="background-color:#FFA420;">
+
+ <div class="Ahorratec-Centro">
+                        <a href="#inicio"><img width="150" src="{{url_for('static', filename='macal.jpg')}}" class="img-responsive" alt="Logo Macal" title="macal.cl" /></a> 
+                    </div>
+
+<div class="container">
+<font color=#686868>
+  <h2>Predicción Modelo Global Remate</h2>
+        <h6>Nota: La garantía es proporcional al minimo y toma valores de 2M,4M,6M  y menos de 10 M</h6>
+     
+</font>
+
+        
+        <div class="row">
+            <div class="col-md-4">
+
+
+
+     <!-- Main Input For Receiving Query to our ML -->
+         <form action="{{ url_for('predict')}}"method="post">
+          
+          <label for="pk">Comuna </label>
+
+              <select name="comuna" id="comuna" >
+
+              <option>Buin</option>
+              <option>Calera de Tango</option>
+              <option>Cerrillos</option>
+              <option>Cerro Navia</option>
+              <option>Colina</option>
+              <option>Conchalí</option>
+              <option>El Bosque</option>
+              <option>El Monte</option>
+              <option>Estación Central</option>
+              <option>Huechuraba</option>
+              <option>Independencia</option>
+              <option>Isla de Maipo</option>
+              <option>La Cisterna</option>
+              <option>La Florida</option>
+              <option>La Granja</option>
+              <option>La Pintana</option>
+              <option>La Reina</option>
+              <option>Lampa</option>
+              <option>Las Condes</option>
+              <option>Lo Barnechea</option>
+              <option>Lo Espejo</option>
+              <option>Lo Prado</option>
+              <option>Macul</option>
+              <option>Maipú</option>
+              <option>Ñuñoa</option>
+              <option>Padre Hurtado</option>
+              <option>Paine</option>
+              <option>Pedro Aguirre Cerda</option>
+              <option>Peñaflor</option>
+              <option>Peñalolén</option>
+              <option>Pirque</option>
+              <option>Providencia</option>
+              <option>Pudahuel</option>
+              <option>Puente Alto</option>
+              <option>Quilicura</option>
+              <option>Quinta Normal</option>
+              <option>Recoleta</option>
+              <option>Renca</option>
+              <option>San Bernardo</option>
+              <option>San Joaquín</option>
+              <option>San José de Maipo</option>
+              <option>San Miguel</option>
+              <option>San Ramón</option>
+              <option>Santiago</option>
+              <option>Talagante</option>
+              <option>Vitacura</option>
+
+
+              </select>
+
+                     <label for="nombre">Estado Ocupación</label>
+                          <select name="ocupacion" id="ocupacion">
+
+                            
+                            <option>NO</option>
+                            <option>SI</option>
+                          
+                        </select>
+                         
+            
+
+                    <p>
+                        
+                
+                        <label for="nombre">Plazo días de pago</label>
+                          <select name="plazo" id="plazo">
+
+                            <option>30</option>
+                            <option>60</option>
+                            <option>15</option>
+                        </select>
+                        <p> 
+
+                       
+                        <label for="nombre"> Cantidad Baños</label>
+                        <input type="number" name="banos" required="required" />
+                         
+                         <label for="nombre"> m^2 constru </label>
+                        <input type="number" name="metros" required="required" />
+
+                         <label for="nombre"> m^2 terreno </label>
+                        <input type="number" name="terreno" required="required" />
+
+                          <label for="nombre">Monto Mínimo </label>
+                        <input type="number" name="minimo" required="required" />
+
+                         <label for="nombre">Monto Garantía </label>
+                        <input type="number" name="garantia" required="required" />
+
+
+                        
+                        <label for="nombre">Tipo Propiedad</label>
+                        <select name="tipo" id="tipo">
+
+                            <option>Departamento</option>
+                            <option>Casa</option>
+                            <option>Terreno</option>
+                            <option>Parcela</option>
+                            <option>Bodega</option>
+                            <option>Oficina</option>
+                            <option>Local</option>
+                            <option>Estacionamiento</option>
+                            <option>Otros</option>
+                        </select>
+                    
+                        <button type="submit"  class="btn btn-primary btn-block btn-large">Predecir</button>
+                 
+                    
+                 
+                </form>
+<h4> {{ prediction_text }}   </h4>
+  
+   
+
+ </div>
+
+
+</body>
+</html>
